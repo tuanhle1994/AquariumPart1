@@ -11,7 +11,7 @@
 #include<memory>
 #include<vector>
 #include"Item.h"
-#include"Stinky.h"
+#include"FishStinky.h"
 
  /**
   * Class that describes an aquarium.
@@ -33,7 +33,7 @@ public:
 	void Add(std::shared_ptr<CItem> item);
 	void Remove(std::shared_ptr<CItem> item);
 
-	void MoveFromStinky(double stinkyX, double stinkyY);
+	void Nudge(CItem* nudger);
 
 	std::shared_ptr<CItem> CAquarium::HitTest(int x, int y);
 };

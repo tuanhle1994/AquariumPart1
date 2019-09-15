@@ -6,7 +6,7 @@
  */
 
 #include "pch.h"
-#include "Stinky.h"
+#include "FishStinky.h"
 #include "Aquarium.h"
 #include <string>
 
@@ -20,7 +20,7 @@ const wstring FishStinkyImageName = L"images/stinky.png";
 * Constructor
 * \param aquarium Aquarium this fish is a member of
 */
-CStinky::CStinky(CAquarium* aquarium) : CItem(aquarium)
+CFishStinky::CFishStinky(CAquarium* aquarium) : CItem(aquarium)
 {
 	mFishImage = unique_ptr<Bitmap>(Bitmap::FromFile(FishStinkyImageName.c_str()));
 	if (mFishImage->GetLastStatus() != Ok)
@@ -35,7 +35,7 @@ CStinky::CStinky(CAquarium* aquarium) : CItem(aquarium)
 * Draw this item
 * \param graphics Graphics device to draw on
 */
-void CStinky::Draw(Gdiplus::Graphics* graphics)
+void CFishStinky::Draw(Gdiplus::Graphics* graphics)
 {
 	double wid = mFishImage->GetWidth();
 	double hit = mFishImage->GetHeight();
@@ -50,7 +50,7 @@ void CStinky::Draw(Gdiplus::Graphics* graphics)
  * \param y Y position to test
  * \return true if hit.
  */
-bool CStinky::HitTest(int x, int y)
+bool CFishStinky::HitTest(int x, int y)
 {
 	double wid = mFishImage->GetWidth();
 	double hit = mFishImage->GetHeight();
@@ -89,8 +89,10 @@ bool CStinky::HitTest(int x, int y)
  * Sets location of sitnky fish and tells other fish where it is
  * \param stinkyX and \param stinkyY Location of stinky fish
  */
-void CStinky::SetLocation(double stinkyX, double stinkyY)
+void CFishStinky::SetLocation(double stinkyX, double stinkyY)
 {
 	CItem::SetLocation(stinkyX, stinkyY);
-	GetmAquarium()->MoveFromStinky(stinkyX, stinkyY); // tells other fish where the stiky fish is
+
+	/* Turned off the carp eating for Step 3 */
+	GetAquarium()->Nudge(this); // points to the nudger
 }

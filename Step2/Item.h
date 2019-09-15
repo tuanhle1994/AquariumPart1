@@ -56,10 +56,12 @@ public:
 	 * \return true if clicked on */
 	virtual bool HitTest(int x, int y) = 0;
 
+	void Nudge(double stinkyX, double stinkyY);
+
 protected:
 	/** Gets the pointer to mAquarium
 	* \returns pointer to mAquarium */
-	CAquarium* GetmAquarium() const { return mAquarium; }
+	CAquarium* GetAquarium() const { return mAquarium; }
 
 	CItem(CAquarium* aquarium);
 };

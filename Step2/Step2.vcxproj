@@ -199,7 +199,7 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Step2.h" />
-    <ClInclude Include="Stinky.h" />
+    <ClInclude Include="FishStinky.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
@@ -217,7 +217,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Step2.cpp" />
-    <ClCompile Include="Stinky.cpp" />
+    <ClCompile Include="FishStinky.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Step2.rc" />

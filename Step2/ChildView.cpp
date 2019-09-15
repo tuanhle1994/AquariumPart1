@@ -15,7 +15,7 @@
 #include "DoubleBufferDC.h"
 #include "FishNemo.h"
 #include "FishGolden.h"
-#include "Stinky.h"
+#include "FishStinky.h"
 
 
 using namespace Gdiplus;
@@ -134,7 +134,7 @@ void CChildView::OnAddGoldenfish()
  */
 void CChildView::OnAddStinkyfish()
 {
-	auto fish = make_shared<CStinky>(&mAquarium);
+	auto fish = make_shared<CFishStinky>(&mAquarium);
 	fish->SetLocation(InitialX, InitialY);
 	mAquarium.Add(fish);
 	Invalidate();

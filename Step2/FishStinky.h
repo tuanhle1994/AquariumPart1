@@ -1,5 +1,5 @@
 /**
- * \file FishGolden.h
+ * \file FishStinky.h
  *
  * \author Tu Le
  *
@@ -13,16 +13,16 @@
  /**
   * Implements a Stinky fish
   */
-class CStinky : public CItem
+class CFishStinky : public CItem
 {
 public:
 	/// Default constructor (disabled)
-	CStinky() = delete;
+	CFishStinky() = delete;
 
 	/// Copy constructor (disabled)
-	CStinky(const CStinky&) = delete;
+	CFishStinky(const CFishStinky&) = delete;
 
-	CStinky(CAquarium* aquarium);
+	CFishStinky(CAquarium* aquarium);
 
 	virtual void Draw(Gdiplus::Graphics* graphics) override;
 

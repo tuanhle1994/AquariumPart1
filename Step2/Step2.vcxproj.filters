@@ -54,7 +54,7 @@
     <ClInclude Include="FishGolden.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Stinky.h">
+    <ClInclude Include="FishStinky.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -86,7 +86,7 @@
     <ClCompile Include="FishGolden.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Stinky.cpp">
+    <ClCompile Include="FishStinky.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -11,25 +11,10 @@
 
 using namespace Gdiplus;
 using namespace std;
+
 /**
  * Aquarium Constructor
  */
-
- /// Maximum allowed X value
-const double MaxX = 950;
-
-/// Minimum allowed X value
-const double MinX = 100;
-
-/// Maximum allowed Y value
-const double MaxY = 750;
-
-/// Minimum allowed Y value
-const double MinY = 50;
-
-/// Minimum distance from a nudging fish
-const double MinDistance = 200;
-
 CAquarium::CAquarium()
 {
 	mBackground = unique_ptr<Gdiplus::Bitmap>(
@@ -79,36 +64,16 @@ void CAquarium::Add(std::shared_ptr<CItem> item)
  * Tells other fish to move from stinky fish
  * \param stinkyX and \param stinkyY Location of stinky fish
  */
-void CAquarium::MoveFromStinky(double stinkyX, double stinkyY)
+void CAquarium::Nudge(CItem* nudger)
 {
-	for (auto item = mItems.rbegin(); item != mItems.rend(); item++)
+	for (auto other : mItems)
 	{
-		double fishX = (*item)->GetX();
-		double fishY = (*item)->GetY();
-		// fishX, fishY is the position of a fish
-		// stinkyX, stinkyY is the position of the stinky 
+		// Do not nudge outselves
+		if (other.get() == nudger) {
+			continue;
+		}
 
-		// Create a vector in the direction we are from the nudger
-		double dx = fishX - stinkyX;
-		double dy = fishY - stinkyY;
-
-		// Determine how far away we are
-		double distance = sqrt(dx * dx + dy * dy);
-		if (distance > 0 && distance < MinDistance)
-		{
-			// Distance is less than our minimum
-			dx *= MinDistance / distance;
-			dy *= MinDistance / distance;
-
-			fishX = stinkyX + dx;
-			fishY = stinkyY + dy;
-
-			// Ensure fishX, fishY remain in the specified bounds
-			if (fishX > MinX && fishX < MaxX && fishY > MinY && fishY < MaxY)
-			{
-				(*item)->CItem::SetLocation(fishX, fishY);
-			}
-		}		
+		other->Nudge(nudger->GetX(), nudger->GetY());
 	}
 }
 
